@@ -345,8 +345,8 @@ void ShapesApp::UpdateCamera(const GameTimer& gt)
 	mEyePos.y = mRadius*cosf(mPhi);
 
 	// Build the view matrix.
-	XMVECTOR pos = XMVectorSet(mEyePos.x, mEyePos.y, mEyePos.z, 1.0f);
-	XMVECTOR target = XMVectorZero();
+    XMVECTOR pos = XMVectorSet(-25, 25, 1, 1.0f);
+    XMVECTOR target = XMVectorZero();
 	XMVECTOR up = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
 
 	XMMATRIX view = XMMatrixLookAtLH(pos, target, up);
@@ -544,14 +544,14 @@ void ShapesApp::BuildShadersAndInputLayout()
 void ShapesApp::BuildShapeGeometry()
 {
     GeometryGenerator geoGen;
-	GeometryGenerator::MeshData wall = geoGen.CreateBox(9.0f, 2.0f, 0.5f, 1);
+	GeometryGenerator::MeshData wall = geoGen.CreateBox(9.0f, 2.0f, 0.5f, 1.0f);
 	GeometryGenerator::MeshData grid = geoGen.CreateGrid(20.0f, 30.0f, 60, 40);
-	GeometryGenerator::MeshData sphere = geoGen.CreateSphere(0.5f, 20, 20);
-	GeometryGenerator::MeshData wallPillar = geoGen.CreateCylinder(1.0f, 1.0f, 3.0f, 4 , 4);
-    GeometryGenerator::MeshData fountainPillar = geoGen.CreateCylinder(1.0f, 1.0f, 3.0f, 8, 8);
-    GeometryGenerator::MeshData wallPillarTop = geoGen.CreateCylinder(1.0f, 0.0f, 3.0f, 4, 5);
-    GeometryGenerator::MeshData fountainPillarTop = geoGen.CreateCylinder(1.0f, 0.0f, 1.0f, 8, 1);
-    GeometryGenerator::MeshData centerFountain = geoGen.CreateCylinder(2.0f, 0.0f, 1.0f, 4, 5);
+	GeometryGenerator::MeshData sphere = geoGen.CreateSphere(0.5f, 20.0f, 20.0f);
+	GeometryGenerator::MeshData wallPillar = geoGen.CreateTriangularPrism(1.0f, 3.0f);
+    GeometryGenerator::MeshData fountainPillar = geoGen.CreateOctagonalPrism(1.0f, 3.0f);
+    GeometryGenerator::MeshData wallPillarTop = geoGen.CreateCone(1.0f, 2.0f);
+    GeometryGenerator::MeshData fountainPillarTop = geoGen.CreatePyramid(2.0f, 2.0f);
+    GeometryGenerator::MeshData centerFountain = geoGen.CreateFlatTopPyramid(2.0f, 1.0f, 1.0f);
    
     // Create pyramid and createa octagonal prism dont work
 

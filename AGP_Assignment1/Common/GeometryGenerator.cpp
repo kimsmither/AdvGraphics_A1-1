@@ -661,7 +661,7 @@ GeometryGenerator::MeshData GeometryGenerator::CreateQuad(float x, float y, floa
 GeometryGenerator::MeshData GeometryGenerator::CreateCone(float bottomRadius, float height)
 {
 	MeshData meshData; 
-	meshData = CreateCylinder(bottomRadius, 0, height, 64, 64);
+	meshData = CreateCylinder(bottomRadius, 0, height, 16, 1);
 	return meshData;
 }
 
@@ -675,28 +675,28 @@ GeometryGenerator::MeshData GeometryGenerator::CreateRectangularPrism(float widt
 GeometryGenerator::MeshData GeometryGenerator::CreateTriangularPrism(float width, float height)
 {
 	MeshData meshData;
-	meshData = CreateCylinder(width, width, height, 3, 64);
+	meshData = CreateCylinder(width, width, height, 3, 1);
 	return meshData;
 }
 
 GeometryGenerator::MeshData GeometryGenerator::CreateOctagonalPrism(float width, float height)
 {
 	MeshData meshData;
-	meshData = CreateCylinder(width, width, height, 8, 64);
+	meshData = CreateCylinder(width, width, height, 8, 8);
 	return meshData;
 }
 
 GeometryGenerator::MeshData GeometryGenerator::CreatePyramid(float width, float height)
 {
 	MeshData meshData;
-	meshData = CreateCylinder(width, 0, height, 4, 64);
+	meshData = CreateCylinder(width, 0, height, 4, 1);
 	return meshData;
 }
 
 GeometryGenerator::MeshData GeometryGenerator::CreateFlatTopPyramid(float width, float topWidth, float height)
 {
 	MeshData meshData;
-	meshData = CreateCylinder(width, topWidth, height, 4, 64);
+	meshData = CreateCylinder(width, topWidth, height, 4, 1);
 	return meshData;
 }
 
